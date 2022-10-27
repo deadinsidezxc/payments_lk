@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ionicons/ionicons.dart';
+
 import '../../../../common/static/colors.dart';
 import '../../../../common/static/styles.dart';
 import '../../../../gen/assets.gen.dart';
@@ -74,7 +76,7 @@ class AllUsersState extends ConsumerState<PaymentsMainPage> with TickerProviderS
       context: context,
       builder: (context) {
         return FractionallySizedBox(
-          heightFactor: 0.3,
+          heightFactor: 0.35,
           child: _chooseSort(),
         );
       },
@@ -161,7 +163,9 @@ class AllUsersState extends ConsumerState<PaymentsMainPage> with TickerProviderS
               return Padding(
                 padding: EdgeInsets.only (top: 14.h),
                 child: SizedBox(
-                  child: CustomListTile(contract: contracts[index]),
+                  child: !(filter == 3 && contracts[index].isActive == false)
+                      ? CustomListTile(contract: contracts[index])
+                      : const SizedBox.shrink(),
                 ),
               );
               },
@@ -277,9 +281,9 @@ class AllUsersState extends ConsumerState<PaymentsMainPage> with TickerProviderS
     switch(filter) {
       case 0 : contract.sort((a, b) => a.number!.toLowerCase().compareTo(b.number!.toLowerCase()));
       break;
-      case 1 : contract.sort((a, b) => _toDateTime(a.date!).compareTo(_toDateTime(b.date!)));
+      case 1 : contract.sort((a, b) => _toDateTime(b.date!).compareTo(_toDateTime(a.date!)));
       break;
-      case 2 : contract.sort((a, b) => _toDateTime(b.date!).compareTo(_toDateTime(a.date!)));
+      case 2 : contract.sort((a, b) => _toDateTime(a.date!).compareTo(_toDateTime(b.date!)));
       break;
     }
   }
@@ -346,44 +350,6 @@ class AllUsersState extends ConsumerState<PaymentsMainPage> with TickerProviderS
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             onPressed: () {
               setState(() {
-                filter = 2;
-              });
-              Navigator.pop(context);
-            },
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 12.w,
-                  height: 12.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: filter == 2
-                        ? AppColors.primary
-                        : Colors.transparent,
-                    border: Border.all(
-                      width: 1.w,
-                      color: filter == 2
-                          ? Colors.transparent
-                          : AppColors.lightDarkGrey,
-                    ),
-                  ),
-                ),
-                6.horizontalSpace,
-                Text(
-                  'сначала новые',
-                  style: AppStyles.body1(),
-                ),
-              ],
-            ),
-          ),
-          MaterialButton(
-            padding: EdgeInsets.zero,
-            minWidth: 1.sw,
-            height: 45.h,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            onPressed: () {
-              setState(() {
                 filter = 1;
               });
               Navigator.pop(context);
@@ -409,50 +375,88 @@ class AllUsersState extends ConsumerState<PaymentsMainPage> with TickerProviderS
                 ),
                 6.horizontalSpace,
                 Text(
+                  'сначала новые',
+                  style: AppStyles.body1(),
+                ),
+              ],
+            ),
+          ),
+          MaterialButton(
+            padding: EdgeInsets.zero,
+            minWidth: 1.sw,
+            height: 45.h,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            onPressed: () {
+              setState(() {
+                filter = 2;
+              });
+              Navigator.pop(context);
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 12.w,
+                  height: 12.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: filter == 2
+                        ? AppColors.primary
+                        : Colors.transparent,
+                    border: Border.all(
+                      width: 1.w,
+                      color: filter == 2
+                          ? Colors.transparent
+                          : AppColors.lightDarkGrey,
+                    ),
+                  ),
+                ),
+                6.horizontalSpace,
+                Text(
                   'сначала старые',
                   style: AppStyles.body1(),
                 ),
               ],
             ),
           ),
-          // MaterialButton(
-          //   padding: EdgeInsets.zero,
-          //   minWidth: 1.sw,
-          //   height: 45.h,
-          //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          //   onPressed: () {
-          //     setState(() {
-          //       filter = 3;
-          //     });
-          //     Navigator.pop(context);
-          //   },
-          //   child: Row(
-          //     crossAxisAlignment: CrossAxisAlignment.center,
-          //     children: [
-          //       Container(
-          //         width: 12.w,
-          //         height: 12.h,
-          //         decoration: BoxDecoration(
-          //           shape: BoxShape.circle,
-          //           color: filter == 3
-          //               ? AppColors.primary
-          //               : Colors.transparent,
-          //           border: Border.all(
-          //             width: 1.w,
-          //             color: filter == 3
-          //                 ? Colors.transparent
-          //                 : AppColors.lightDarkGrey,
-          //           ),
-          //         ),
-          //       ),
-          //       6.horizontalSpace,
-          //       Text(
-          //         'только активные',
-          //         style: AppStyles.body1(),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          MaterialButton(
+            padding: EdgeInsets.zero,
+            minWidth: 1.sw,
+            height: 45.h,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            onPressed: () {
+              setState(() {
+                filter = 3;
+              });
+              Navigator.pop(context);
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 12.w,
+                  height: 12.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: filter == 3
+                        ? AppColors.primary
+                        : Colors.transparent,
+                    border: Border.all(
+                      width: 1.w,
+                      color: filter == 3
+                          ? Colors.transparent
+                          : AppColors.lightDarkGrey,
+                    ),
+                  ),
+                ),
+                6.horizontalSpace,
+                Text(
+                  'только активные',
+                  style: AppStyles.body1(),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

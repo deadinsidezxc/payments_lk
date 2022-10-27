@@ -12,7 +12,7 @@ class ContractModel with _$ContractModel {
       @JsonKey(name: 'ContractDate') String? date,
       @JsonKey(name: 'typeContract') String? type,
       @JsonKey(name: 'ContractSumm') int? balance,
-      //@JsonKey(name: 'ContractSummFull') int? price,
+      @JsonKey(name: 'isActive') bool isActive,
       @JsonKey(name: 'nameOrganization') String? organization,
       @JsonKey(name: 'SubscriptionFee') int? fee,
       @JsonKey(name: 'Autopay') bool autopay,

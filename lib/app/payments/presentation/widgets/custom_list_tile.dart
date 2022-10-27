@@ -217,6 +217,22 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
   //   );
   // }
 
+  Widget _fileIcon() {
+    if(widget.contract.isActive) {
+      return Assets.icons.fileok.svg(
+        width: 35.w,
+        height: 38.h,
+        color: widget.contract.balance!.isNegative ? AppColors.primary : AppColors.darkGrey,
+      );
+    } else {
+      return Assets.icons.filedebt.svg(
+        width: 35.w,
+        height: 38.h,
+        color: AppColors.grey,
+      );
+    }
+  }
+
   Widget _listTile() {
     return MaterialButton(
       padding: EdgeInsets.zero,
@@ -250,17 +266,13 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
         ),
         padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 14.w),
         width: 328.w,
-        height: 150.h,
+        height: 152.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Assets.icons.fileok.svg(
-                  width: 35.w,
-                  height: 38.h,
-                  color: widget.contract.balance!.isNegative ? AppColors.primary : AppColors.darkGrey,
-                ),
+                _fileIcon(),
                 8.horizontalSpace,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -334,14 +346,15 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
                     _autoPay(),
                     5.horizontalSpace,
                     Container(
-                      height: 20.h,
+                      height: 31.h,
                       alignment: Alignment.centerLeft,
                       child: _topUpPayment(),
                     ),
                   ],
                 ),
-                //16.horizontalSpace,
-                Expanded(
+                !widget.contract.isActive
+                ? SizedBox.shrink()
+                : Expanded(
                   child: Container(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -365,16 +378,21 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
   }
 
   Widget _topUpPayment() {
+    if(widget.contract.isActive == false) {
+      return Text(
+        'Не активен',
+        style: AppStyles.subHeader2().copyWith(color: AppColors.lightDarkGrey),
+      );
+    }
     if (widget.contract.balance!.isNegative) {
       return MaterialButton(
         padding: EdgeInsets.zero,
-        //materialTapTargetSize: MaterialTapTargetSize.padded,
         onPressed:() async {
           showBottomPayOneSheet(context, controller: controller, contract: widget.contract);
         },
         child: Container(
           width: 120.w,
-          height: 20.h,
+          height: 31.h,
           alignment: Alignment.centerLeft,
           child: Text(
             'Пополнить',

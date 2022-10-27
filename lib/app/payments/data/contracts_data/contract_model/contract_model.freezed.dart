@@ -27,8 +27,9 @@ mixin _$ContractModel {
   @JsonKey(name: 'typeContract')
   String? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'ContractSumm')
-  int? get balance =>
-      throw _privateConstructorUsedError; //@JsonKey(name: 'ContractSummFull') int? price,
+  int? get balance => throw _privateConstructorUsedError;
+  @JsonKey(name: 'isActive')
+  bool get isActive => throw _privateConstructorUsedError;
   @JsonKey(name: 'nameOrganization')
   String? get organization => throw _privateConstructorUsedError;
   @JsonKey(name: 'SubscriptionFee')
@@ -55,6 +56,7 @@ abstract class $ContractModelCopyWith<$Res> {
       @JsonKey(name: 'ContractDate') String? date,
       @JsonKey(name: 'typeContract') String? type,
       @JsonKey(name: 'ContractSumm') int? balance,
+      @JsonKey(name: 'isActive') bool isActive,
       @JsonKey(name: 'nameOrganization') String? organization,
       @JsonKey(name: 'SubscriptionFee') int? fee,
       @JsonKey(name: 'Autopay') bool autopay,
@@ -77,6 +79,7 @@ class _$ContractModelCopyWithImpl<$Res>
     Object? date = freezed,
     Object? type = freezed,
     Object? balance = freezed,
+    Object? isActive = freezed,
     Object? organization = freezed,
     Object? fee = freezed,
     Object? autopay = freezed,
@@ -100,6 +103,10 @@ class _$ContractModelCopyWithImpl<$Res>
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as int?,
+      isActive: isActive == freezed
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
       organization: organization == freezed
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
@@ -136,6 +143,7 @@ abstract class _$$_ContractModelCopyWith<$Res>
       @JsonKey(name: 'ContractDate') String? date,
       @JsonKey(name: 'typeContract') String? type,
       @JsonKey(name: 'ContractSumm') int? balance,
+      @JsonKey(name: 'isActive') bool isActive,
       @JsonKey(name: 'nameOrganization') String? organization,
       @JsonKey(name: 'SubscriptionFee') int? fee,
       @JsonKey(name: 'Autopay') bool autopay,
@@ -160,6 +168,7 @@ class __$$_ContractModelCopyWithImpl<$Res>
     Object? date = freezed,
     Object? type = freezed,
     Object? balance = freezed,
+    Object? isActive = freezed,
     Object? organization = freezed,
     Object? fee = freezed,
     Object? autopay = freezed,
@@ -183,6 +192,10 @@ class __$$_ContractModelCopyWithImpl<$Res>
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as int?,
+      isActive == freezed
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
       organization == freezed
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
@@ -215,6 +228,7 @@ class _$_ContractModel implements _ContractModel {
       @JsonKey(name: 'ContractDate') this.date,
       @JsonKey(name: 'typeContract') this.type,
       @JsonKey(name: 'ContractSumm') this.balance,
+      @JsonKey(name: 'isActive') this.isActive,
       @JsonKey(name: 'nameOrganization') this.organization,
       @JsonKey(name: 'SubscriptionFee') this.fee,
       @JsonKey(name: 'Autopay') this.autopay,
@@ -237,7 +251,9 @@ class _$_ContractModel implements _ContractModel {
   @override
   @JsonKey(name: 'ContractSumm')
   final int? balance;
-//@JsonKey(name: 'ContractSummFull') int? price,
+  @override
+  @JsonKey(name: 'isActive')
+  final bool isActive;
   @override
   @JsonKey(name: 'nameOrganization')
   final String? organization;
@@ -260,7 +276,7 @@ class _$_ContractModel implements _ContractModel {
 
   @override
   String toString() {
-    return 'ContractModel(number: $number, date: $date, type: $type, balance: $balance, organization: $organization, fee: $fee, autopay: $autopay, address: $address, id: $id)';
+    return 'ContractModel(number: $number, date: $date, type: $type, balance: $balance, isActive: $isActive, organization: $organization, fee: $fee, autopay: $autopay, address: $address, id: $id)';
   }
 
   @override
@@ -272,6 +288,7 @@ class _$_ContractModel implements _ContractModel {
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.balance, balance) &&
+            const DeepCollectionEquality().equals(other.isActive, isActive) &&
             const DeepCollectionEquality()
                 .equals(other.organization, organization) &&
             const DeepCollectionEquality().equals(other.fee, fee) &&
@@ -288,6 +305,7 @@ class _$_ContractModel implements _ContractModel {
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(balance),
+      const DeepCollectionEquality().hash(isActive),
       const DeepCollectionEquality().hash(organization),
       const DeepCollectionEquality().hash(fee),
       const DeepCollectionEquality().hash(autopay),
@@ -313,6 +331,7 @@ abstract class _ContractModel implements ContractModel {
       @JsonKey(name: 'ContractDate') final String? date,
       @JsonKey(name: 'typeContract') final String? type,
       @JsonKey(name: 'ContractSumm') final int? balance,
+      @JsonKey(name: 'isActive') final bool isActive,
       @JsonKey(name: 'nameOrganization') final String? organization,
       @JsonKey(name: 'SubscriptionFee') final int? fee,
       @JsonKey(name: 'Autopay') final bool autopay,
@@ -334,7 +353,10 @@ abstract class _ContractModel implements ContractModel {
   @override
   @JsonKey(name: 'ContractSumm')
   int? get balance;
-  @override //@JsonKey(name: 'ContractSummFull') int? price,
+  @override
+  @JsonKey(name: 'isActive')
+  bool get isActive;
+  @override
   @JsonKey(name: 'nameOrganization')
   String? get organization;
   @override
