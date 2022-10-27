@@ -43,6 +43,14 @@ class TransactionInfo extends StatelessWidget {
             : AppColors.darkGrey;
   }
 
+  Color _colorRed() {
+    return payment.type == 'unknown'
+        ? AppColors.lightDarkGrey
+        : payment.type == 'lk' || payment.type == 'site'
+        ? AppColors.darkGreen
+        : AppColors.primary;
+  }
+
   String _checkType(String? type) {
     if(type == null) {
       return 'null';
@@ -78,6 +86,7 @@ class TransactionInfo extends StatelessWidget {
     return Container(
       width: 1.sw,
       height: 220.h,
+      padding: EdgeInsets.symmetric(vertical: 16.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(16.r),
@@ -88,31 +97,31 @@ class TransactionInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          12.verticalSpace,
+          //16.verticalSpace,
           Text(
             payment.date!,
             style: AppStyles.subHeader2().copyWith(color: Colors.white),
           ),
-          33.verticalSpace,
+          40.verticalSpace,
           Text(
             payment.type == 'unknown'
                 ? 'Неизвестно'
                 : payment.type == 'lk' || payment.type == 'site' ? 'Пополнение' : 'Списание',
             style: AppStyles.buttonOn().copyWith(color: Colors.white, fontSize: 16.sp),
           ),
-          12.verticalSpace,
+          16.verticalSpace,
           Text(
             payment.type == 'unknown'
                 ? '? р'
                 : payment.type == 'lk' || payment.type == 'site'
                 ? '+ ${_formatValue(payment.price!.abs())} р'
                 : '- ${_formatValue(payment.price!.abs())} р',
-            style: AppStyles.header1().copyWith(color: Colors.white, fontSize: 36.sp),
+            style: AppStyles.header1().copyWith(color: Colors.white, fontSize: 40.sp),
           ),
-          33.verticalSpace,
+          34.verticalSpace,
           Text(
             _checkType(payment.type),
-            style: AppStyles.body3().copyWith(color: Colors.white, fontSize: 14.sp),
+            style: AppStyles.body3().copyWith(color: Colors.white, fontSize: 13.sp),
           ),
         ],
       ),
@@ -132,7 +141,7 @@ class TransactionInfo extends StatelessWidget {
               children: [
                 Text(
                   'Договор № ${contract.number} от ${_formatDate(contract.date)}',
-                  style: AppStyles.subHeader1(),
+                  style: AppStyles.subHeader2(),
                 ),
                 12.verticalSpace,
                 Text(
@@ -170,7 +179,7 @@ class TransactionInfo extends StatelessWidget {
       children: [
         Text(
           '${service.name}',
-          style: AppStyles.subHeader1().copyWith(decoration: TextDecoration.underline),
+          style: AppStyles.subHeader2().copyWith(),
         ),
         12.verticalSpace,
         Text(
@@ -188,7 +197,7 @@ class TransactionInfo extends StatelessWidget {
               child: Text(
                 '${(service.price ?? 0) * (service.count ?? 0)} р',
                 textAlign: TextAlign.end,
-                style: AppStyles.header1().copyWith(fontSize: 16.sp),
+                style: AppStyles.subHeader1().copyWith(color: _colorRed()),
               ),
             ),
           ],
