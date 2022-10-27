@@ -5,7 +5,7 @@ import 'colors.dart';
 
 class AppStyles {
   static TextStyle _basicFont() =>
-      const TextStyle(fontFamily: 'HelveticaNeueCyr', color: AppColors.darkGrey);
+      const TextStyle(fontFamily: 'HelveticaNeueCyr-Roman', color: AppColors.darkGrey);
 
   // Figma - Заголовок основной
   static TextStyle header1() =>

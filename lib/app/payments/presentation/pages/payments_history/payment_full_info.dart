@@ -102,26 +102,26 @@ class TransactionInfo extends StatelessWidget {
             payment.date!,
             style: AppStyles.subHeader2().copyWith(color: Colors.white),
           ),
-          40.verticalSpace,
+          34.verticalSpace,
           Text(
             payment.type == 'unknown'
                 ? 'Неизвестно'
                 : payment.type == 'lk' || payment.type == 'site' ? 'Пополнение' : 'Списание',
             style: AppStyles.buttonOn().copyWith(color: Colors.white, fontSize: 16.sp),
           ),
-          16.verticalSpace,
+          14.verticalSpace,
           Text(
             payment.type == 'unknown'
                 ? '? р'
                 : payment.type == 'lk' || payment.type == 'site'
                 ? '+ ${_formatValue(payment.price!.abs())} р'
                 : '- ${_formatValue(payment.price!.abs())} р',
-            style: AppStyles.header1().copyWith(color: Colors.white, fontSize: 40.sp),
+            style: AppStyles.header1().copyWith(color: Colors.white, fontSize: 38.sp),
           ),
-          34.verticalSpace,
+          28.verticalSpace,
           Text(
             _checkType(payment.type),
-            style: AppStyles.body3().copyWith(color: Colors.white, fontSize: 13.sp),
+            style: AppStyles.body3().copyWith(color: Colors.white, fontSize: 11.sp),
           ),
         ],
       ),

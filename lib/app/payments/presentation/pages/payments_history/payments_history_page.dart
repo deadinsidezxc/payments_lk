@@ -4,8 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:reforce_platform/app/payments/presentation/pages/payments_history/payment_full_info.dart';
+
 import '../../../../../common/static/colors.dart';
 import '../../../../../common/static/styles.dart';
+import '../../../../../gen/assets.gen.dart';
 import '../../../data/contracts_data/contract_model/contract_model.dart';
 import '../../../data/payment_history_data/payments_history_model/payments_history_model.dart';
 import '../contract_info_page.dart';
@@ -270,15 +272,16 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
       shadowColor: Colors.black.withOpacity(0.15),
       centerTitle: true,
       leading: IconButton(
-        icon: Icon(
-            Ionicons.chevron_back, color: AppColors.darkGrey, size: 16.w),
+        icon: Assets.icons.chevronBack.svg(
+          color: AppColors.darkGrey,
+        ),
         onPressed: () {
           Navigator.pop(context);
         },
       ),
       title: Container(
-        width: ScreenUtil().setWidth(180),
-        height: ScreenUtil().setHeight(24),
+        width: 180.w,
+        height: 24.h,
         alignment: Alignment.center,
         child: Text(
           'История платежей',
@@ -450,9 +453,7 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                     style: AppStyles.body1(),
                   ),
                   8.horizontalSpace,
-                  Icon(
-                    Ionicons.chevron_down,
-                    size: 18.w,
+                  Assets.icons.chevronDown.svg(
                     color: AppColors.darkGrey,
                   ),
                 ],
@@ -460,12 +461,12 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
             ),
           )
               : MaterialButton(
-            padding: EdgeInsets.zero,
-            onPressed: () async {
-              setState(() {
-                _show();
-              });
-            },
+                 padding: EdgeInsets.zero,
+                 onPressed: () async {
+                   setState(() {
+                     _show();
+                   });
+                   },
             child: Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -497,10 +498,11 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                       });
                     },
                     child: Center(
-                      child: Icon(
-                        Ionicons.close,
-                        size: 20.w,
-                        color: Colors.white,
+                      child: Assets.icons.cross.svg(
+                          color: Colors.white,
+                          width: 18.w,
+                          height: 18.h,
+                          alignment: Alignment.center
                       ),
                     ),
                   ),
@@ -533,9 +535,7 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                     style: AppStyles.body1(),
                   ),
                   8.horizontalSpace,
-                  Icon(
-                    Ionicons.chevron_down,
-                    size: 18.w,
+                  Assets.icons.chevronDown.svg(
                     color: AppColors.darkGrey,
                   ),
                 ],
@@ -574,7 +574,7 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                     padding: EdgeInsets.zero,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     height: 32.h,
-                    minWidth: 42.w,
+                    minWidth: 36.w,
                     onPressed: () {
                       setState(() {
                         _chosenType = false;
@@ -582,10 +582,11 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                       });
                     },
                     child: Center(
-                      child: Icon(
-                        Ionicons.close,
-                        size: 20.w,
+                      child: Assets.icons.cross.svg(
                         color: Colors.white,
+                        width: 18.w,
+                        height: 18.h,
+                        alignment: Alignment.center
                       ),
                     ),
                   ),

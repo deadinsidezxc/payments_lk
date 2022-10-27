@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -266,7 +268,7 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
         ),
         padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 14.w),
         width: 328.w,
-        height: 152.h,
+        height: 160.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -294,10 +296,11 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
                           Expanded(
                             child: Container(
                               alignment: Alignment.centerRight,
-                              child: Icon(
-                                Ionicons.chevron_forward,
-                                size: 18.w,
-                                color: AppColors.darkGrey,
+                              child: Transform.rotate(
+                                angle: pi,
+                                child: Assets.icons.chevronBack.svg(
+                                  color: AppColors.darkGrey,
+                                ),
                               ),
                             ),
                           ),

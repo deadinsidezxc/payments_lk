@@ -14,6 +14,14 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/chevron_back.svg
+  SvgGenImage get chevronBack =>
+      const SvgGenImage('assets/icons/chevron_back.svg');
+
+  /// File path: assets/icons/chevron_down.svg
+  SvgGenImage get chevronDown =>
+      const SvgGenImage('assets/icons/chevron_down.svg');
+
   /// File path: assets/icons/cross.svg
   SvgGenImage get cross => const SvgGenImage('assets/icons/cross.svg');
 
