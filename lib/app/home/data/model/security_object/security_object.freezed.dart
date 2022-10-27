@@ -42,7 +42,8 @@ mixin _$SecurityObject {
 abstract class $SecurityObjectCopyWith<$Res> {
   factory $SecurityObjectCopyWith(
           SecurityObject value, $Res Function(SecurityObject) then) =
-      _$SecurityObjectCopyWithImpl<$Res>;
+      _$SecurityObjectCopyWithImpl<$Res, SecurityObject>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'number') int? id,
       @JsonKey(name: 'name') String? name,
@@ -54,14 +55,16 @@ abstract class $SecurityObjectCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SecurityObjectCopyWithImpl<$Res>
+class _$SecurityObjectCopyWithImpl<$Res, $Val extends SecurityObject>
     implements $SecurityObjectCopyWith<$Res> {
   _$SecurityObjectCopyWithImpl(this._value, this._then);
 
-  final SecurityObject _value;
   // ignore: unused_field
-  final $Res Function(SecurityObject) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -73,35 +76,35 @@ class _$SecurityObjectCopyWithImpl<$Res>
     Object? batteryStatus = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      sections: sections == freezed
+      sections: freezed == sections
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<SecuritySection>?,
-      sosStatus: sosStatus == freezed
+      sosStatus: freezed == sosStatus
           ? _value.sosStatus
           : sosStatus // ignore: cast_nullable_to_non_nullable
               as SosStatus?,
-      electricityStatus: electricityStatus == freezed
+      electricityStatus: freezed == electricityStatus
           ? _value.electricityStatus
           : electricityStatus // ignore: cast_nullable_to_non_nullable
               as ElectricityStatus?,
-      batteryStatus: batteryStatus == freezed
+      batteryStatus: freezed == batteryStatus
           ? _value.batteryStatus
           : batteryStatus // ignore: cast_nullable_to_non_nullable
               as BatteryStatus?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -112,6 +115,7 @@ abstract class _$$_SecurityObjectCopyWith<$Res>
           _$_SecurityObject value, $Res Function(_$_SecurityObject) then) =
       __$$_SecurityObjectCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'number') int? id,
       @JsonKey(name: 'name') String? name,
@@ -124,15 +128,13 @@ abstract class _$$_SecurityObjectCopyWith<$Res>
 
 /// @nodoc
 class __$$_SecurityObjectCopyWithImpl<$Res>
-    extends _$SecurityObjectCopyWithImpl<$Res>
+    extends _$SecurityObjectCopyWithImpl<$Res, _$_SecurityObject>
     implements _$$_SecurityObjectCopyWith<$Res> {
   __$$_SecurityObjectCopyWithImpl(
       _$_SecurityObject _value, $Res Function(_$_SecurityObject) _then)
-      : super(_value, (v) => _then(v as _$_SecurityObject));
+      : super(_value, _then);
 
-  @override
-  _$_SecurityObject get _value => super._value as _$_SecurityObject;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -144,31 +146,31 @@ class __$$_SecurityObjectCopyWithImpl<$Res>
     Object? batteryStatus = freezed,
   }) {
     return _then(_$_SecurityObject(
-      id == freezed
+      freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name == freezed
+      freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      address == freezed
+      freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      sections == freezed
+      freezed == sections
           ? _value._sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<SecuritySection>?,
-      sosStatus == freezed
+      freezed == sosStatus
           ? _value.sosStatus
           : sosStatus // ignore: cast_nullable_to_non_nullable
               as SosStatus?,
-      electricityStatus == freezed
+      freezed == electricityStatus
           ? _value.electricityStatus
           : electricityStatus // ignore: cast_nullable_to_non_nullable
               as ElectricityStatus?,
-      batteryStatus == freezed
+      freezed == batteryStatus
           ? _value.batteryStatus
           : batteryStatus // ignore: cast_nullable_to_non_nullable
               as BatteryStatus?,
@@ -228,31 +230,33 @@ class _$_SecurityObject extends _SecurityObject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SecurityObject &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality().equals(other._sections, _sections) &&
-            const DeepCollectionEquality().equals(other.sosStatus, sosStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.electricityStatus, electricityStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.batteryStatus, batteryStatus));
+            (identical(other.sosStatus, sosStatus) ||
+                other.sosStatus == sosStatus) &&
+            (identical(other.electricityStatus, electricityStatus) ||
+                other.electricityStatus == electricityStatus) &&
+            (identical(other.batteryStatus, batteryStatus) ||
+                other.batteryStatus == batteryStatus));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(address),
+      id,
+      name,
+      address,
       const DeepCollectionEquality().hash(_sections),
-      const DeepCollectionEquality().hash(sosStatus),
-      const DeepCollectionEquality().hash(electricityStatus),
-      const DeepCollectionEquality().hash(batteryStatus));
+      sosStatus,
+      electricityStatus,
+      batteryStatus);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SecurityObjectCopyWith<_$_SecurityObject> get copyWith =>
       __$$_SecurityObjectCopyWithImpl<_$_SecurityObject>(this, _$identity);
 

@@ -31,28 +31,32 @@ mixin _$Objects {
 /// @nodoc
 abstract class $ObjectsCopyWith<$Res> {
   factory $ObjectsCopyWith(Objects value, $Res Function(Objects) then) =
-      _$ObjectsCopyWithImpl<$Res>;
+      _$ObjectsCopyWithImpl<$Res, Objects>;
+  @useResult
   $Res call({@JsonKey(name: 'AdressObjectProtection') String? addressName});
 }
 
 /// @nodoc
-class _$ObjectsCopyWithImpl<$Res> implements $ObjectsCopyWith<$Res> {
+class _$ObjectsCopyWithImpl<$Res, $Val extends Objects>
+    implements $ObjectsCopyWith<$Res> {
   _$ObjectsCopyWithImpl(this._value, this._then);
 
-  final Objects _value;
   // ignore: unused_field
-  final $Res Function(Objects) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? addressName = freezed,
   }) {
     return _then(_value.copyWith(
-      addressName: addressName == freezed
+      addressName: freezed == addressName
           ? _value.addressName
           : addressName // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -62,24 +66,24 @@ abstract class _$$_ObjectsCopyWith<$Res> implements $ObjectsCopyWith<$Res> {
           _$_Objects value, $Res Function(_$_Objects) then) =
       __$$_ObjectsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(name: 'AdressObjectProtection') String? addressName});
 }
 
 /// @nodoc
-class __$$_ObjectsCopyWithImpl<$Res> extends _$ObjectsCopyWithImpl<$Res>
+class __$$_ObjectsCopyWithImpl<$Res>
+    extends _$ObjectsCopyWithImpl<$Res, _$_Objects>
     implements _$$_ObjectsCopyWith<$Res> {
   __$$_ObjectsCopyWithImpl(_$_Objects _value, $Res Function(_$_Objects) _then)
-      : super(_value, (v) => _then(v as _$_Objects));
+      : super(_value, _then);
 
-  @override
-  _$_Objects get _value => super._value as _$_Objects;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? addressName = freezed,
   }) {
     return _then(_$_Objects(
-      addressName == freezed
+      freezed == addressName
           ? _value.addressName
           : addressName // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -109,17 +113,17 @@ class _$_Objects implements _Objects {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Objects &&
-            const DeepCollectionEquality()
-                .equals(other.addressName, addressName));
+            (identical(other.addressName, addressName) ||
+                other.addressName == addressName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(addressName));
+  int get hashCode => Object.hash(runtimeType, addressName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ObjectsCopyWith<_$_Objects> get copyWith =>
       __$$_ObjectsCopyWithImpl<_$_Objects>(this, _$identity);
 

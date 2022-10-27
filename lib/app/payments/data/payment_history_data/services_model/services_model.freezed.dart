@@ -43,7 +43,8 @@ mixin _$Services {
 /// @nodoc
 abstract class $ServicesCopyWith<$Res> {
   factory $ServicesCopyWith(Services value, $Res Function(Services) then) =
-      _$ServicesCopyWithImpl<$Res>;
+      _$ServicesCopyWithImpl<$Res, Services>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'Count') int? count,
       @JsonKey(name: 'Price') int? price,
@@ -54,13 +55,16 @@ abstract class $ServicesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServicesCopyWithImpl<$Res> implements $ServicesCopyWith<$Res> {
+class _$ServicesCopyWithImpl<$Res, $Val extends Services>
+    implements $ServicesCopyWith<$Res> {
   _$ServicesCopyWithImpl(this._value, this._then);
 
-  final Services _value;
   // ignore: unused_field
-  final $Res Function(Services) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? count = freezed,
@@ -71,31 +75,31 @@ class _$ServicesCopyWithImpl<$Res> implements $ServicesCopyWith<$Res> {
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      count: count == freezed
+      count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -105,6 +109,7 @@ abstract class _$$_ServicesCopyWith<$Res> implements $ServicesCopyWith<$Res> {
           _$_Services value, $Res Function(_$_Services) then) =
       __$$_ServicesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'Count') int? count,
       @JsonKey(name: 'Price') int? price,
@@ -115,15 +120,14 @@ abstract class _$$_ServicesCopyWith<$Res> implements $ServicesCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ServicesCopyWithImpl<$Res> extends _$ServicesCopyWithImpl<$Res>
+class __$$_ServicesCopyWithImpl<$Res>
+    extends _$ServicesCopyWithImpl<$Res, _$_Services>
     implements _$$_ServicesCopyWith<$Res> {
   __$$_ServicesCopyWithImpl(
       _$_Services _value, $Res Function(_$_Services) _then)
-      : super(_value, (v) => _then(v as _$_Services));
+      : super(_value, _then);
 
-  @override
-  _$_Services get _value => super._value as _$_Services;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? count = freezed,
@@ -134,27 +138,27 @@ class __$$_ServicesCopyWithImpl<$Res> extends _$ServicesCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_$_Services(
-      count == freezed
+      freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-      price == freezed
+      freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int?,
-      name == freezed
+      freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      address == freezed
+      freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      number == freezed
+      freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      type == freezed
+      freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -206,27 +210,22 @@ class _$_Services implements _Services {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Services &&
-            const DeepCollectionEquality().equals(other.count, count) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(count),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode =>
+      Object.hash(runtimeType, count, price, name, address, number, type);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ServicesCopyWith<_$_Services> get copyWith =>
       __$$_ServicesCopyWithImpl<_$_Services>(this, _$identity);
 

@@ -25,7 +25,7 @@ class TabView extends StatelessWidget {
       iconSize: 31,
       title: "Главное",
       textStyle: AppStyles.body3(),
-      activeColorPrimary: AppColors.primary,
+      activeColorPrimary: AppColors.darkGrey,
       inactiveColorPrimary: const Color.fromRGBO(196, 196, 196, 1),
     ),
     PersistentBottomNavBarItem(
@@ -33,7 +33,7 @@ class TabView extends StatelessWidget {
       iconSize: 31,
       title: "Платежи",
       textStyle: AppStyles.body3(),
-      activeColorPrimary: AppColors.primary,
+      activeColorPrimary: AppColors.darkGrey,
       inactiveColorPrimary: const Color.fromRGBO(196, 196, 196, 1),
     ),
     PersistentBottomNavBarItem(

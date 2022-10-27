@@ -61,17 +61,18 @@ flutter:
     - assets/icons/nocontracts.svg
     - assets/icons/cross.svg
     - assets/icons/time.svg
-    - assets/icons/chevron_back.svg
-    - assets/icons/chevron_down.svg
-  fonts:
-    - family: HelveticaNeueCyr
-      fonts:
-        - asset: assets/fonts/HelveticaNeueCyr-Light.ttf
-          weight: 300
-        - asset: assets/fonts/HelveticaNeueCyr-Roman.ttf
-          weight: 400
-        - asset: assets/fonts/HelveticaNeueCyr-Medium.ttf
-          weight: 500
-    - family: Navbar
-      fonts:
-        - asset: assets/fonts/Navbar.ttf
+    - assets/icons/chevronback.svg
+    - assets/icons/chevrondown.svg
+
+fonts:
+  - family: HelveticaNeueCyr
+    fonts:
+      - asset: assets/fonts/HelveticaNeueCyr-Light.ttf
+        weight: 300
+      - asset: assets/fonts/HelveticaNeueCyr-Roman.ttf
+        weight: 400
+      - asset: assets/fonts/HelveticaNeueCyr-Medium.ttf
+        weight: 500
+  - family: Navbar
+    fonts:
+      - asset: assets/fonts/Navbar.ttf

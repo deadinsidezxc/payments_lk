@@ -30,7 +30,8 @@ mixin _$SecurityData {
 abstract class $SecurityDataCopyWith<$Res> {
   factory $SecurityDataCopyWith(
           SecurityData value, $Res Function(SecurityData) then) =
-      _$SecurityDataCopyWithImpl<$Res>;
+      _$SecurityDataCopyWithImpl<$Res, SecurityData>;
+  @useResult
   $Res call(
       {SosStatus? sosStatus,
       ElectricityStatus? electricityStatus,
@@ -38,13 +39,16 @@ abstract class $SecurityDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SecurityDataCopyWithImpl<$Res> implements $SecurityDataCopyWith<$Res> {
+class _$SecurityDataCopyWithImpl<$Res, $Val extends SecurityData>
+    implements $SecurityDataCopyWith<$Res> {
   _$SecurityDataCopyWithImpl(this._value, this._then);
 
-  final SecurityData _value;
   // ignore: unused_field
-  final $Res Function(SecurityData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? sosStatus = freezed,
@@ -52,19 +56,19 @@ class _$SecurityDataCopyWithImpl<$Res> implements $SecurityDataCopyWith<$Res> {
     Object? batteryStatus = freezed,
   }) {
     return _then(_value.copyWith(
-      sosStatus: sosStatus == freezed
+      sosStatus: freezed == sosStatus
           ? _value.sosStatus
           : sosStatus // ignore: cast_nullable_to_non_nullable
               as SosStatus?,
-      electricityStatus: electricityStatus == freezed
+      electricityStatus: freezed == electricityStatus
           ? _value.electricityStatus
           : electricityStatus // ignore: cast_nullable_to_non_nullable
               as ElectricityStatus?,
-      batteryStatus: batteryStatus == freezed
+      batteryStatus: freezed == batteryStatus
           ? _value.batteryStatus
           : batteryStatus // ignore: cast_nullable_to_non_nullable
               as BatteryStatus?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +79,7 @@ abstract class _$$_SecurityDataCopyWith<$Res>
           _$_SecurityData value, $Res Function(_$_SecurityData) then) =
       __$$_SecurityDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {SosStatus? sosStatus,
       ElectricityStatus? electricityStatus,
@@ -83,15 +88,13 @@ abstract class _$$_SecurityDataCopyWith<$Res>
 
 /// @nodoc
 class __$$_SecurityDataCopyWithImpl<$Res>
-    extends _$SecurityDataCopyWithImpl<$Res>
+    extends _$SecurityDataCopyWithImpl<$Res, _$_SecurityData>
     implements _$$_SecurityDataCopyWith<$Res> {
   __$$_SecurityDataCopyWithImpl(
       _$_SecurityData _value, $Res Function(_$_SecurityData) _then)
-      : super(_value, (v) => _then(v as _$_SecurityData));
+      : super(_value, _then);
 
-  @override
-  _$_SecurityData get _value => super._value as _$_SecurityData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? sosStatus = freezed,
@@ -99,15 +102,15 @@ class __$$_SecurityDataCopyWithImpl<$Res>
     Object? batteryStatus = freezed,
   }) {
     return _then(_$_SecurityData(
-      sosStatus == freezed
+      freezed == sosStatus
           ? _value.sosStatus
           : sosStatus // ignore: cast_nullable_to_non_nullable
               as SosStatus?,
-      electricityStatus == freezed
+      freezed == electricityStatus
           ? _value.electricityStatus
           : electricityStatus // ignore: cast_nullable_to_non_nullable
               as ElectricityStatus?,
-      batteryStatus == freezed
+      freezed == batteryStatus
           ? _value.batteryStatus
           : batteryStatus // ignore: cast_nullable_to_non_nullable
               as BatteryStatus?,
@@ -137,22 +140,21 @@ class _$_SecurityData implements _SecurityData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SecurityData &&
-            const DeepCollectionEquality().equals(other.sosStatus, sosStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.electricityStatus, electricityStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.batteryStatus, batteryStatus));
+            (identical(other.sosStatus, sosStatus) ||
+                other.sosStatus == sosStatus) &&
+            (identical(other.electricityStatus, electricityStatus) ||
+                other.electricityStatus == electricityStatus) &&
+            (identical(other.batteryStatus, batteryStatus) ||
+                other.batteryStatus == batteryStatus));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(sosStatus),
-      const DeepCollectionEquality().hash(electricityStatus),
-      const DeepCollectionEquality().hash(batteryStatus));
+  int get hashCode =>
+      Object.hash(runtimeType, sosStatus, electricityStatus, batteryStatus);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SecurityDataCopyWith<_$_SecurityData> get copyWith =>
       __$$_SecurityDataCopyWithImpl<_$_SecurityData>(this, _$identity);
 }

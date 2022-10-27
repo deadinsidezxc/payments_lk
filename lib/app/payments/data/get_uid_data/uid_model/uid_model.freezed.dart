@@ -35,35 +35,39 @@ mixin _$GetUidModel {
 abstract class $GetUidModelCopyWith<$Res> {
   factory $GetUidModelCopyWith(
           GetUidModel value, $Res Function(GetUidModel) then) =
-      _$GetUidModelCopyWithImpl<$Res>;
+      _$GetUidModelCopyWithImpl<$Res, GetUidModel>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'client') String? clientName,
       @JsonKey(name: 'guid') String? uid});
 }
 
 /// @nodoc
-class _$GetUidModelCopyWithImpl<$Res> implements $GetUidModelCopyWith<$Res> {
+class _$GetUidModelCopyWithImpl<$Res, $Val extends GetUidModel>
+    implements $GetUidModelCopyWith<$Res> {
   _$GetUidModelCopyWithImpl(this._value, this._then);
 
-  final GetUidModel _value;
   // ignore: unused_field
-  final $Res Function(GetUidModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientName = freezed,
     Object? uid = freezed,
   }) {
     return _then(_value.copyWith(
-      clientName: clientName == freezed
+      clientName: freezed == clientName
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
               as String?,
-      uid: uid == freezed
+      uid: freezed == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -74,32 +78,32 @@ abstract class _$$_GetUidModelCopyWith<$Res>
           _$_GetUidModel value, $Res Function(_$_GetUidModel) then) =
       __$$_GetUidModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'client') String? clientName,
       @JsonKey(name: 'guid') String? uid});
 }
 
 /// @nodoc
-class __$$_GetUidModelCopyWithImpl<$Res> extends _$GetUidModelCopyWithImpl<$Res>
+class __$$_GetUidModelCopyWithImpl<$Res>
+    extends _$GetUidModelCopyWithImpl<$Res, _$_GetUidModel>
     implements _$$_GetUidModelCopyWith<$Res> {
   __$$_GetUidModelCopyWithImpl(
       _$_GetUidModel _value, $Res Function(_$_GetUidModel) _then)
-      : super(_value, (v) => _then(v as _$_GetUidModel));
+      : super(_value, _then);
 
-  @override
-  _$_GetUidModel get _value => super._value as _$_GetUidModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientName = freezed,
     Object? uid = freezed,
   }) {
     return _then(_$_GetUidModel(
-      clientName == freezed
+      freezed == clientName
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
               as String?,
-      uid == freezed
+      freezed == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -133,20 +137,18 @@ class _$_GetUidModel implements _GetUidModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetUidModel &&
-            const DeepCollectionEquality()
-                .equals(other.clientName, clientName) &&
-            const DeepCollectionEquality().equals(other.uid, uid));
+            (identical(other.clientName, clientName) ||
+                other.clientName == clientName) &&
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clientName),
-      const DeepCollectionEquality().hash(uid));
+  int get hashCode => Object.hash(runtimeType, clientName, uid);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GetUidModelCopyWith<_$_GetUidModel> get copyWith =>
       __$$_GetUidModelCopyWithImpl<_$_GetUidModel>(this, _$identity);
 

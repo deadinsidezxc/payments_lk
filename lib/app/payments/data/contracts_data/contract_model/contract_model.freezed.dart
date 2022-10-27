@@ -50,7 +50,8 @@ mixin _$ContractModel {
 abstract class $ContractModelCopyWith<$Res> {
   factory $ContractModelCopyWith(
           ContractModel value, $Res Function(ContractModel) then) =
-      _$ContractModelCopyWithImpl<$Res>;
+      _$ContractModelCopyWithImpl<$Res, ContractModel>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'ContractNumber') String? number,
       @JsonKey(name: 'ContractDate') String? date,
@@ -65,69 +66,71 @@ abstract class $ContractModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContractModelCopyWithImpl<$Res>
+class _$ContractModelCopyWithImpl<$Res, $Val extends ContractModel>
     implements $ContractModelCopyWith<$Res> {
   _$ContractModelCopyWithImpl(this._value, this._then);
 
-  final ContractModel _value;
   // ignore: unused_field
-  final $Res Function(ContractModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? number = freezed,
     Object? date = freezed,
     Object? type = freezed,
     Object? balance = freezed,
-    Object? isActive = freezed,
+    Object? isActive = null,
     Object? organization = freezed,
     Object? fee = freezed,
-    Object? autopay = freezed,
-    Object? address = freezed,
+    Object? autopay = null,
+    Object? address = null,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      date: date == freezed
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      balance: balance == freezed
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as int?,
-      isActive: isActive == freezed
+      isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
-      organization: organization == freezed
+      organization: freezed == organization
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
               as String?,
-      fee: fee == freezed
+      fee: freezed == fee
           ? _value.fee
           : fee // ignore: cast_nullable_to_non_nullable
               as int?,
-      autopay: autopay == freezed
+      autopay: null == autopay
           ? _value.autopay
           : autopay // ignore: cast_nullable_to_non_nullable
               as bool,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as List<Objects>,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -138,6 +141,7 @@ abstract class _$$_ContractModelCopyWith<$Res>
           _$_ContractModel value, $Res Function(_$_ContractModel) then) =
       __$$_ContractModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'ContractNumber') String? number,
       @JsonKey(name: 'ContractDate') String? date,
@@ -153,66 +157,64 @@ abstract class _$$_ContractModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ContractModelCopyWithImpl<$Res>
-    extends _$ContractModelCopyWithImpl<$Res>
+    extends _$ContractModelCopyWithImpl<$Res, _$_ContractModel>
     implements _$$_ContractModelCopyWith<$Res> {
   __$$_ContractModelCopyWithImpl(
       _$_ContractModel _value, $Res Function(_$_ContractModel) _then)
-      : super(_value, (v) => _then(v as _$_ContractModel));
+      : super(_value, _then);
 
-  @override
-  _$_ContractModel get _value => super._value as _$_ContractModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? number = freezed,
     Object? date = freezed,
     Object? type = freezed,
     Object? balance = freezed,
-    Object? isActive = freezed,
+    Object? isActive = null,
     Object? organization = freezed,
     Object? fee = freezed,
-    Object? autopay = freezed,
-    Object? address = freezed,
+    Object? autopay = null,
+    Object? address = null,
     Object? id = freezed,
   }) {
     return _then(_$_ContractModel(
-      number == freezed
+      freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      date == freezed
+      freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      type == freezed
+      freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      balance == freezed
+      freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as int?,
-      isActive == freezed
+      null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
-      organization == freezed
+      freezed == organization
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
               as String?,
-      fee == freezed
+      freezed == fee
           ? _value.fee
           : fee // ignore: cast_nullable_to_non_nullable
               as int?,
-      autopay == freezed
+      null == autopay
           ? _value.autopay
           : autopay // ignore: cast_nullable_to_non_nullable
               as bool,
-      address == freezed
+      null == address
           ? _value._address
           : address // ignore: cast_nullable_to_non_nullable
               as List<Objects>,
-      id == freezed
+      freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -284,36 +286,38 @@ class _$_ContractModel implements _ContractModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ContractModel &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.balance, balance) &&
-            const DeepCollectionEquality().equals(other.isActive, isActive) &&
-            const DeepCollectionEquality()
-                .equals(other.organization, organization) &&
-            const DeepCollectionEquality().equals(other.fee, fee) &&
-            const DeepCollectionEquality().equals(other.autopay, autopay) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.balance, balance) || other.balance == balance) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.organization, organization) ||
+                other.organization == organization) &&
+            (identical(other.fee, fee) || other.fee == fee) &&
+            (identical(other.autopay, autopay) || other.autopay == autopay) &&
             const DeepCollectionEquality().equals(other._address, _address) &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(balance),
-      const DeepCollectionEquality().hash(isActive),
-      const DeepCollectionEquality().hash(organization),
-      const DeepCollectionEquality().hash(fee),
-      const DeepCollectionEquality().hash(autopay),
+      number,
+      date,
+      type,
+      balance,
+      isActive,
+      organization,
+      fee,
+      autopay,
       const DeepCollectionEquality().hash(_address),
-      const DeepCollectionEquality().hash(id));
+      id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ContractModelCopyWith<_$_ContractModel> get copyWith =>
       __$$_ContractModelCopyWithImpl<_$_ContractModel>(this, _$identity);
 

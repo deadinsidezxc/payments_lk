@@ -37,7 +37,8 @@ mixin _$ContractIDModel {
 abstract class $ContractIDModelCopyWith<$Res> {
   factory $ContractIDModelCopyWith(
           ContractIDModel value, $Res Function(ContractIDModel) then) =
-      _$ContractIDModelCopyWithImpl<$Res>;
+      _$ContractIDModelCopyWithImpl<$Res, ContractIDModel>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'number') String? number,
@@ -45,14 +46,16 @@ abstract class $ContractIDModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContractIDModelCopyWithImpl<$Res>
+class _$ContractIDModelCopyWithImpl<$Res, $Val extends ContractIDModel>
     implements $ContractIDModelCopyWith<$Res> {
   _$ContractIDModelCopyWithImpl(this._value, this._then);
 
-  final ContractIDModel _value;
   // ignore: unused_field
-  final $Res Function(ContractIDModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -60,19 +63,19 @@ class _$ContractIDModelCopyWithImpl<$Res>
     Object? id1c = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      id1c: id1c == freezed
+      id1c: freezed == id1c
           ? _value.id1c
           : id1c // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -83,6 +86,7 @@ abstract class _$$_ContractIDModelCopyWith<$Res>
           _$_ContractIDModel value, $Res Function(_$_ContractIDModel) then) =
       __$$_ContractIDModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'number') String? number,
@@ -91,15 +95,13 @@ abstract class _$$_ContractIDModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ContractIDModelCopyWithImpl<$Res>
-    extends _$ContractIDModelCopyWithImpl<$Res>
+    extends _$ContractIDModelCopyWithImpl<$Res, _$_ContractIDModel>
     implements _$$_ContractIDModelCopyWith<$Res> {
   __$$_ContractIDModelCopyWithImpl(
       _$_ContractIDModel _value, $Res Function(_$_ContractIDModel) _then)
-      : super(_value, (v) => _then(v as _$_ContractIDModel));
+      : super(_value, _then);
 
-  @override
-  _$_ContractIDModel get _value => super._value as _$_ContractIDModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -107,15 +109,15 @@ class __$$_ContractIDModelCopyWithImpl<$Res>
     Object? id1c = freezed,
   }) {
     return _then(_$_ContractIDModel(
-      id == freezed
+      freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      number == freezed
+      freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      id1c == freezed
+      freezed == id1c
           ? _value.id1c
           : id1c // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -152,21 +154,18 @@ class _$_ContractIDModel implements _ContractIDModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ContractIDModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality().equals(other.id1c, id1c));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.id1c, id1c) || other.id1c == id1c));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(id1c));
+  int get hashCode => Object.hash(runtimeType, id, number, id1c);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ContractIDModelCopyWith<_$_ContractIDModel> get copyWith =>
       __$$_ContractIDModelCopyWithImpl<_$_ContractIDModel>(this, _$identity);
 

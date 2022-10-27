@@ -232,7 +232,7 @@ class _CharacterInfoState extends ConsumerState<CharacterInfo> with ShowableBott
                     Navigator.of(context).pop();
                   },
                 ),
-                53.horizontalSpace,
+                56.horizontalSpace,
                 Text(
                   'Договор № ${widget.contract.number}',
                   style: AppStyles.headerTitle(),

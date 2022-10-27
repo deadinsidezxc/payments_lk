@@ -35,36 +35,39 @@ mixin _$ValidateResponse {
 abstract class $ValidateResponseCopyWith<$Res> {
   factory $ValidateResponseCopyWith(
           ValidateResponse value, $Res Function(ValidateResponse) then) =
-      _$ValidateResponseCopyWithImpl<$Res>;
+      _$ValidateResponseCopyWithImpl<$Res, ValidateResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'token') String? token,
       @JsonKey(name: 'full_name') String? fullName});
 }
 
 /// @nodoc
-class _$ValidateResponseCopyWithImpl<$Res>
+class _$ValidateResponseCopyWithImpl<$Res, $Val extends ValidateResponse>
     implements $ValidateResponseCopyWith<$Res> {
   _$ValidateResponseCopyWithImpl(this._value, this._then);
 
-  final ValidateResponse _value;
   // ignore: unused_field
-  final $Res Function(ValidateResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
     Object? fullName = freezed,
   }) {
     return _then(_value.copyWith(
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: fullName == freezed
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_ValidateResponseCopyWith<$Res>
           _$_ValidateResponse value, $Res Function(_$_ValidateResponse) then) =
       __$$_ValidateResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'token') String? token,
       @JsonKey(name: 'full_name') String? fullName});
@@ -82,26 +86,24 @@ abstract class _$$_ValidateResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ValidateResponseCopyWithImpl<$Res>
-    extends _$ValidateResponseCopyWithImpl<$Res>
+    extends _$ValidateResponseCopyWithImpl<$Res, _$_ValidateResponse>
     implements _$$_ValidateResponseCopyWith<$Res> {
   __$$_ValidateResponseCopyWithImpl(
       _$_ValidateResponse _value, $Res Function(_$_ValidateResponse) _then)
-      : super(_value, (v) => _then(v as _$_ValidateResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ValidateResponse get _value => super._value as _$_ValidateResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
     Object? fullName = freezed,
   }) {
     return _then(_$_ValidateResponse(
-      token == freezed
+      freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName == freezed
+      freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -135,19 +137,18 @@ class _$_ValidateResponse implements _ValidateResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ValidateResponse &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.fullName, fullName));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(fullName));
+  int get hashCode => Object.hash(runtimeType, token, fullName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ValidateResponseCopyWith<_$_ValidateResponse> get copyWith =>
       __$$_ValidateResponseCopyWithImpl<_$_ValidateResponse>(this, _$identity);
 

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reforce_platform/gen/fonts.gen.dart';
 
 import 'colors.dart';
 
 class AppStyles {
   static TextStyle _basicFont() =>
-      const TextStyle(fontFamily: 'HelveticaNeueCyr-Roman', color: AppColors.darkGrey);
+      const TextStyle(fontFamily: FontFamily.helveticaNeueCyr, color: AppColors.darkGrey);
 
   // Figma - Заголовок основной
   static TextStyle header1() =>

@@ -39,7 +39,8 @@ mixin _$PaymentsHistoryModel {
 abstract class $PaymentsHistoryModelCopyWith<$Res> {
   factory $PaymentsHistoryModelCopyWith(PaymentsHistoryModel value,
           $Res Function(PaymentsHistoryModel) then) =
-      _$PaymentsHistoryModelCopyWithImpl<$Res>;
+      _$PaymentsHistoryModelCopyWithImpl<$Res, PaymentsHistoryModel>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'date') String? date,
       @JsonKey(name: 'type_pay') String? type,
@@ -48,39 +49,42 @@ abstract class $PaymentsHistoryModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentsHistoryModelCopyWithImpl<$Res>
+class _$PaymentsHistoryModelCopyWithImpl<$Res,
+        $Val extends PaymentsHistoryModel>
     implements $PaymentsHistoryModelCopyWith<$Res> {
   _$PaymentsHistoryModelCopyWithImpl(this._value, this._then);
 
-  final PaymentsHistoryModel _value;
   // ignore: unused_field
-  final $Res Function(PaymentsHistoryModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? date = freezed,
     Object? type = freezed,
     Object? price = freezed,
-    Object? services = freezed,
+    Object? services = null,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int?,
-      services: services == freezed
+      services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
               as List<Services>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -91,6 +95,7 @@ abstract class _$$_PaymentsHistoryModelCopyWith<$Res>
           $Res Function(_$_PaymentsHistoryModel) then) =
       __$$_PaymentsHistoryModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'date') String? date,
       @JsonKey(name: 'type_pay') String? type,
@@ -100,36 +105,34 @@ abstract class _$$_PaymentsHistoryModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentsHistoryModelCopyWithImpl<$Res>
-    extends _$PaymentsHistoryModelCopyWithImpl<$Res>
+    extends _$PaymentsHistoryModelCopyWithImpl<$Res, _$_PaymentsHistoryModel>
     implements _$$_PaymentsHistoryModelCopyWith<$Res> {
   __$$_PaymentsHistoryModelCopyWithImpl(_$_PaymentsHistoryModel _value,
       $Res Function(_$_PaymentsHistoryModel) _then)
-      : super(_value, (v) => _then(v as _$_PaymentsHistoryModel));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentsHistoryModel get _value => super._value as _$_PaymentsHistoryModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? date = freezed,
     Object? type = freezed,
     Object? price = freezed,
-    Object? services = freezed,
+    Object? services = null,
   }) {
     return _then(_$_PaymentsHistoryModel(
-      date == freezed
+      freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      type == freezed
+      freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      price == freezed
+      freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int?,
-      services == freezed
+      null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
               as List<Services>,
@@ -177,23 +180,20 @@ class _$_PaymentsHistoryModel implements _PaymentsHistoryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentsHistoryModel &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other._services, _services));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(price),
+  int get hashCode => Object.hash(runtimeType, date, type, price,
       const DeepCollectionEquality().hash(_services));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentsHistoryModelCopyWith<_$_PaymentsHistoryModel> get copyWith =>
       __$$_PaymentsHistoryModelCopyWithImpl<_$_PaymentsHistoryModel>(
           this, _$identity);

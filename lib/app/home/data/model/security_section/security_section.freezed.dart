@@ -38,7 +38,8 @@ mixin _$SecuritySection {
 abstract class $SecuritySectionCopyWith<$Res> {
   factory $SecuritySectionCopyWith(
           SecuritySection value, $Res Function(SecuritySection) then) =
-      _$SecuritySectionCopyWithImpl<$Res>;
+      _$SecuritySectionCopyWithImpl<$Res, SecuritySection>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'number') int? id,
       @JsonKey(name: 'status') SecuritySectionStatus? securityStatus,
@@ -46,14 +47,16 @@ abstract class $SecuritySectionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SecuritySectionCopyWithImpl<$Res>
+class _$SecuritySectionCopyWithImpl<$Res, $Val extends SecuritySection>
     implements $SecuritySectionCopyWith<$Res> {
   _$SecuritySectionCopyWithImpl(this._value, this._then);
 
-  final SecuritySection _value;
   // ignore: unused_field
-  final $Res Function(SecuritySection) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -61,19 +64,19 @@ class _$SecuritySectionCopyWithImpl<$Res>
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      securityStatus: securityStatus == freezed
+      securityStatus: freezed == securityStatus
           ? _value.securityStatus
           : securityStatus // ignore: cast_nullable_to_non_nullable
               as SecuritySectionStatus?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -84,6 +87,7 @@ abstract class _$$_SecuritySectionCopyWith<$Res>
           _$_SecuritySection value, $Res Function(_$_SecuritySection) then) =
       __$$_SecuritySectionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'number') int? id,
       @JsonKey(name: 'status') SecuritySectionStatus? securityStatus,
@@ -92,15 +96,13 @@ abstract class _$$_SecuritySectionCopyWith<$Res>
 
 /// @nodoc
 class __$$_SecuritySectionCopyWithImpl<$Res>
-    extends _$SecuritySectionCopyWithImpl<$Res>
+    extends _$SecuritySectionCopyWithImpl<$Res, _$_SecuritySection>
     implements _$$_SecuritySectionCopyWith<$Res> {
   __$$_SecuritySectionCopyWithImpl(
       _$_SecuritySection _value, $Res Function(_$_SecuritySection) _then)
-      : super(_value, (v) => _then(v as _$_SecuritySection));
+      : super(_value, _then);
 
-  @override
-  _$_SecuritySection get _value => super._value as _$_SecuritySection;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -108,15 +110,15 @@ class __$$_SecuritySectionCopyWithImpl<$Res>
     Object? name = freezed,
   }) {
     return _then(_$_SecuritySection(
-      id == freezed
+      freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      securityStatus == freezed
+      freezed == securityStatus
           ? _value.securityStatus
           : securityStatus // ignore: cast_nullable_to_non_nullable
               as SecuritySectionStatus?,
-      name == freezed
+      freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -155,22 +157,19 @@ class _$_SecuritySection implements _SecuritySection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SecuritySection &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.securityStatus, securityStatus) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.securityStatus, securityStatus) ||
+                other.securityStatus == securityStatus) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(securityStatus),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, id, securityStatus, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SecuritySectionCopyWith<_$_SecuritySection> get copyWith =>
       __$$_SecuritySectionCopyWithImpl<_$_SecuritySection>(this, _$identity);
 
