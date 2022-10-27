@@ -195,7 +195,7 @@ class TransactionInfo extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                '${(service.price ?? 0) * (service.count ?? 0)} р',
+                '- ${(service.price ?? 0) * (service.count ?? 0)} р',
                 textAlign: TextAlign.end,
                 style: AppStyles.subHeader1().copyWith(color: _colorRed()),
               ),
