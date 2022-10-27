@@ -571,7 +571,7 @@ class MySearchDelegate extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Assets.icons.chevronBack.svg(
+      icon: Assets.icons.chevronback.svg(
         color: AppColors.darkGrey,
       ),
       onPressed: () {

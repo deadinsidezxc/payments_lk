@@ -272,7 +272,7 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
       shadowColor: Colors.black.withOpacity(0.15),
       centerTitle: true,
       leading: IconButton(
-        icon: Assets.icons.chevronBack.svg(
+        icon: Assets.icons.chevronback.svg(
           color: AppColors.darkGrey,
         ),
         onPressed: () {
@@ -453,7 +453,7 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                     style: AppStyles.body1(),
                   ),
                   8.horizontalSpace,
-                  Assets.icons.chevronDown.svg(
+                  Assets.icons.chevrondown.svg(
                     color: AppColors.darkGrey,
                   ),
                 ],
@@ -535,7 +535,7 @@ class _PaymentsHistoryState extends ConsumerState<PaymentsHistory> with TickerPr
                     style: AppStyles.body1(),
                   ),
                   8.horizontalSpace,
-                  Assets.icons.chevronDown.svg(
+                  Assets.icons.chevrondown.svg(
                     color: AppColors.darkGrey,
                   ),
                 ],

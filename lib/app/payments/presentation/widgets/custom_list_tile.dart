@@ -298,7 +298,7 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
                               alignment: Alignment.centerRight,
                               child: Transform.rotate(
                                 angle: pi,
-                                child: Assets.icons.chevronBack.svg(
+                                child: Assets.icons.chevronback.svg(
                                   color: AppColors.darkGrey,
                                 ),
                               ),

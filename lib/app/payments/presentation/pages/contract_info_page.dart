@@ -225,7 +225,7 @@ class _CharacterInfoState extends ConsumerState<CharacterInfo> with ShowableBott
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  icon: Assets.icons.chevronBack.svg(
+                  icon: Assets.icons.chevronback.svg(
                     color: AppColors.darkGrey,
                   ),
                   onPressed: () {

@@ -73,6 +73,7 @@ fonts:
         weight: 400
       - asset: assets/fonts/HelveticaNeueCyr-Medium.ttf
         weight: 500
+
   - family: Navbar
     fonts:
       - asset: assets/fonts/Navbar.ttf
