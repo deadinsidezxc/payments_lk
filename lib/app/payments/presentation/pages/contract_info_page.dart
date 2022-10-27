@@ -207,6 +207,7 @@ class _CharacterInfoState extends ConsumerState<CharacterInfo> with ShowableBott
 
   AppBar _appBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       toolbarHeight: 156.h,
       elevation: 6.0,
       shadowColor: Colors.black.withOpacity(0.20),
