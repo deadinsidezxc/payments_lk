@@ -515,6 +515,9 @@ class MySearchDelegate extends SearchDelegate {
   }
 
   void _addToHistory(String value) {
+    if(value == '') {
+      return;
+    }
     if(searchHistory.length < 5) {
       List<String> tempList = searchHistory.reversed.toList();
       tempList.add(value);
@@ -586,13 +589,13 @@ class MySearchDelegate extends SearchDelegate {
           icon: Transform.rotate(
             angle: pi / 2,
             child: Icon(
-              Ionicons.options,
+              Ionicons.close,
               color: AppColors.darkGrey,
               size: ScreenUtil().setWidth(24),
             ),
           ),
           onPressed: () {
-            //query = '';
+            query = '';
           },
         ),
         12.horizontalSpace,

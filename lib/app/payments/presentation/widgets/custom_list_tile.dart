@@ -126,7 +126,7 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
 
   String _payDay(String? dateRaw) {
     if(dateRaw == null || widget.contract.fee == 0) {
-      return dateRaw == null ? 'unknown' : 'free contract';
+      return dateRaw == null ? 'unknown' : 'infinite';
     } else {
       if(widget.contract.balance!.isNegative) {
         return 'долг ${_formatValue(widget.contract.balance!.abs())} Р';
@@ -357,14 +357,16 @@ class ListTileState extends ConsumerState<CustomListTile> with  ShowableBottomPa
                 : Expanded(
                   child: Container(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      _payDay(widget.contract.date),
-                      style: AppStyles.body3().copyWith(
-                        height: 0.92,
-                        color: widget.contract.balance!.isNegative
-                          ? AppColors.primary
-                          : AppColors.darkGreen,
-                      ),
+                    child: _payDay(widget.contract.date) == 'infinite'
+                        ? Icon(Ionicons.infinite_outline, color: AppColors.darkGreen, size: 20.w,)
+                        : Text(
+                          _payDay(widget.contract.date),
+                          style: AppStyles.body3().copyWith(
+                            height: 0.92,
+                            color: widget.contract.balance!.isNegative
+                                ? AppColors.primary
+                                : AppColors.darkGreen,
+                          ),
                     ),
                   ),
                 ),
